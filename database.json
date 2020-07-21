@@ -1,0 +1,4 @@
+{
+  "dev": "mongodb://obfuscated",
+  "prod": "mongodb://obfuscated"
+}

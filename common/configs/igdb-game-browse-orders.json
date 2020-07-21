@@ -1,0 +1,18 @@
+[
+  {
+    "text": "Default",
+    "value": ""
+  },
+  {
+    "text": "Popularity",
+    "value": "popularity:desc"
+  },
+  {
+    "text": "Release Date: ↓",
+    "value": "first_release_date:desc"
+  },
+  {
+    "text": "Release Date: ↑",
+    "value": "first_release_date:asc"
+  }
+]

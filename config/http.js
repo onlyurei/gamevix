@@ -9,52 +9,48 @@
  * https://sailsjs.com/config/http
  */
 
-module.exports.http = {
+const helmet = require('helmet')
+const redirectSsl = require('redirect-ssl')
+const { nuxt } = require('./nuxt')
 
+module.exports.http = {
   /****************************************************************************
-  *                                                                           *
-  * Sails/Express middleware to run for every HTTP request.                   *
-  * (Only applies to HTTP requests -- not virtual WebSocket requests.)        *
-  *                                                                           *
-  * https://sailsjs.com/documentation/concepts/middleware                     *
-  *                                                                           *
-  ****************************************************************************/
+   *                                                                           *
+   * Sails/Express middleware to run for every HTTP request.                   *
+   * (Only applies to HTTP requests -- not virtual WebSocket requests.)        *
+   *                                                                           *
+   * https://sailsjs.com/documentation/concepts/middleware                     *
+   *                                                                           *
+   ****************************************************************************/
 
   middleware: {
-
     /***************************************************************************
-    *                                                                          *
-    * The order in which middleware should be run for HTTP requests.           *
-    * (This Sails app's routes are handled by the "router" middleware below.)  *
-    *                                                                          *
-    ***************************************************************************/
-    nuxt: function (req, res, next) {
-      const Nuxt = require('nuxt');
-      const options = require('../nuxt.config');
-      options.dev = !(process.env.NODE_ENV === 'production');
-      // Instanciate nuxt.js
-      const nuxt = new Nuxt(options);
+     *                                                                          *
+     * The order in which middleware should be run for HTTP requests.           *
+     * (This Sails app's routes are handled by the "router" middleware below.)  *
+     *                                                                          *
+     ***************************************************************************/
+
+    helmet: helmet(),
+
+    redirectSsl,
+
+    nuxt(req, res) {
       // Build in development
-      if (options.dev) {
-        nuxt.build()
-          .then(nxt => {
-            return next(nxt.render);
-          });
-      }
+      return nuxt.render(req, res)
     },
 
     order: [
+      'helmet',
+      'redirectSsl',
       'cookieParser',
       'session',
       'bodyParser',
       'compress',
-      'poweredBy',
       'router',
+      'nuxt',
       'www',
-      'favicon',
-      'nuxt'
-    ],
-
-  },
-
-};
+      'favicon'
+    ]
+  }
+}

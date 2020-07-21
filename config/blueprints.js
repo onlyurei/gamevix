@@ -11,62 +11,70 @@
  */
 
 module.exports.blueprints = {
-
   /***************************************************************************
-  *                                                                          *
-  * Automatically expose implicit routes for every action in your app?       *
-  *                                                                          *
-  ***************************************************************************/
+   *                                                                          *
+   * Automatically expose implicit routes for every action in your app?       *
+   *                                                                          *
+   ***************************************************************************/
 
   // actions: false,
 
+  /***************************************************************************
+   *                                                                          *
+   * Automatically expose RESTful routes for your models?                     *
+   *                                                                          *
+   ***************************************************************************/
+
+  rest: true,
 
   /***************************************************************************
-  *                                                                          *
-  * Automatically expose RESTful routes for your models?                     *
-  *                                                                          *
-  ***************************************************************************/
+   *                                                                          *
+   * Automatically expose CRUD "shortcut" routes to GET requests?             *
+   * (These are enabled by default in development only.)                      *
+   *                                                                          *
+   ***************************************************************************/
 
-  // rest: true,
-
-
-  /***************************************************************************
-  *                                                                          *
-  * Automatically expose CRUD "shortcut" routes to GET requests?             *
-  * (These are enabled by default in development only.)                      *
-  *                                                                          *
-  ***************************************************************************/
-
-  // shortcuts: true,
-
+  shortcuts: false,
 
   /***************************************************************************
-  *                                                                          *
-  * Optional mount path prefix for all implicit blueprint routes ("shadows") *
-  *                                                                          *
-  ***************************************************************************/
+   *                                                                          *
+   * Optional mount path prefix for all implicit blueprint routes ("shadows") *
+   *                                                                          *
+   ***************************************************************************/
 
-  // prefix: '',
-
-
-  /***************************************************************************
-  *                                                                          *
-  * Whether to use plural model names in blueprint routes                    *
-  * (e.g. `/users` for the `User` model)                                     *
-  *                                                                          *
-  ***************************************************************************/
-
-  // pluralize: false,
-
+  prefix: '/api',
 
   /***************************************************************************
-  *                                                                          *
-  * Automatically enroll sockets requesting the `find` blueprint action to   *
-  * receive special notifications about any new records for the same model.  *
-  * (Only notifies for records created with the `create` blueprint action.)  *
-  *                                                                          *
-  ***************************************************************************/
+   *                                                                          *
+   * Whether to use plural model names in blueprint routes                    *
+   * (e.g. `/users` for the `User` model)                                     *
+   *                                                                          *
+   ***************************************************************************/
+
+  pluralize: true,
+
+  /***************************************************************************
+   *                                                                          *
+   * Automatically enroll sockets requesting the `find` blueprint action to   *
+   * receive special notifications about any new records for the same model.  *
+   * (Only notifies for records created with the `create` blueprint action.)  *
+   *                                                                          *
+   ***************************************************************************/
 
   // autoWatch: true,
 
-};
+  /***************************************************************************
+   *                                                                          *
+   https://github.com/balderdashy/sails-docs/blob/1.0/reference/sails.config/sails.config.blueprints.md#using-parseblueprintoptions
+   *                                                                          *
+   ***************************************************************************/
+
+  parseBlueprintOptions(req) {
+    const queryOptions = req._sails.hooks.blueprints.parseBlueprintOptions(req)
+
+    if (!req.param('populate', false) && !queryOptions.alias) {
+      queryOptions.populates = {}
+    }
+    return queryOptions
+  }
+}

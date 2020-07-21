@@ -1,0 +1,5 @@
+---
+applications:
+ - name: gamevix
+   host: gamevix
+   memory: 512M

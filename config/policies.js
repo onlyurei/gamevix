@@ -13,37 +13,33 @@
  * https://sailsjs.com/docs/concepts/policies
  */
 
+const rateLimit = require('./../api/services/rate-limit')
 
 module.exports.policies = {
-
-  /***************************************************************************
-  *                                                                          *
-  * Default policy for all controllers and actions (`true` allows public     *
-  * access)                                                                  *
-  *                                                                          *
-  ***************************************************************************/
-
-  // '*': true,
-
-  /***************************************************************************
-  *                                                                          *
-  * Here's an example of mapping some policies to run before a controller    *
-  * and its actions                                                          *
-  *                                                                          *
-  ***************************************************************************/
-  // UserController: {
-  //
-  //   // We might mandate that requests come from a logged-in user for
-  //   // most actions in this controller.
-  //   '*': 'isLoggedIn',
-  //
-  //   // But we'll let anyone access the 'login' and 'signup' actions
-  //   login: true,
-  //   signup: true,
-  //
-  //   // And we'll only let admins delete users.
-  //   destroy: 'isAdmin',
-  //
-  // },
-
-};
+  '*': false, // whitelist to be safe since we use blueprint rest
+  'address/create': 'hasPassport',
+  'address/update': 'isUserItself',
+  'address/destroy': 'isUserItself',
+  'admin/find': ['setAdmin', 'isAdmin'],
+  'market-scores/get': true,
+  'model/attributes': true,
+  'user/*': ['setAdmin', 'isUserItself'],
+  'user/create': true,
+  'user/verify-email': true,
+  'user/update': ['setAdmin', 'isUserItself', 'safelyUpdateUser'],
+  'user/destroy': false,
+  'user-game/add': 'isUserItself',
+  'user-game/cancel-swaps': ['setAdmin', 'isAdmin'],
+  'user-game/get-swappable-games': ['setAdmin', 'isAdmin'],
+  'user-game/swap': ['setAdmin', 'isAdmin'],
+  'user-game/swap-preview': ['setAdmin', 'isAdmin'],
+  'user-platform/add': 'isUserItself',
+  'user-swap-preference/add': 'isUserItself',
+  'usergame/findOne': ['setAdmin', 'isAdmin'],
+  'usergame/find': ['setAdmin', 'isAdmin'],
+  'usergame/update': ['isUserItself', 'hasNoFutureOwner'], //TODO truly make sure game belongs to user
+  'usergame/destroy': ['isUserItself', 'hasNoFutureOwner'], //TODO truly make sure game belongs to user
+  'userplatform/findOne': true,
+  'video-games/endpoint': process.env.NODE_ENV === 'production' ? [rateLimit] : true,
+  'util/summarize-text': true
+}

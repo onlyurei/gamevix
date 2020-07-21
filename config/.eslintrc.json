@@ -1,0 +1,6 @@
+{
+  "globals": {
+    "sails": false,
+    "_": false
+  }
+}

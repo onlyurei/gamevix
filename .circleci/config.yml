@@ -1,0 +1,23 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8.9.4
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run:
+          name: Install NPM Packages
+          command: npm install
+      - run:
+          name: Lint Code
+          command: npm run lint
+      - deploy:
+          name: Deploy Branch "develop"
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "develop" ]; then
+              curl -L "https://cli.run.pivotal.io/stable?release=linux64-binary&source=github" | tar -zx
+              sudo cp cf /usr/local/bin
+              cf login -u $CF_USER -p $CF_PASSWORD -a https://api.ng.bluemix.net -o gamevix -s dev
+              npm run deploy
+            fi

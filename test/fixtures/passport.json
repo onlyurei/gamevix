@@ -1,0 +1,18 @@
+[
+  {
+    "createdAt": 1502665385576,
+    "updatedAt": 1502665385576,
+    "id": "5990daa99daebb461a5a1485",
+    "protocol": "local",
+    "password": "$2a$08$12pFdXeAM1WojkmRN6KRe.Z54ZfmgB2cYSU1SpJDkQn05pqmDyN/q",
+    "accessToken": "Dhx13w88kDAtb_UJF0j4ffwCvcSQAP8cU6aQ0r1OBDAOM9RwCHpAakIDsRQ0DJFf",
+    "provider": "",
+    "identifier": "",
+    "tokens": null,
+    "models": {
+      "user": {
+        "id": "5990daa99daebb461a5a1484"
+      }
+    }
+  }
+]

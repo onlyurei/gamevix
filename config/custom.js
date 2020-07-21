@@ -6,18 +6,35 @@
  *
  * For more information on custom configuration, visit:
  * https://sailsjs.com/config/custom
-*/
+ */
 
 module.exports.custom = {
-
   /**************************************************************************
-  *                                                                          *
-  * Default settings for custom configuration used in your app.              *
-  * (these may also be overridden in config/env/production.js)               *
-  *                                                                          *
-  ***************************************************************************/
-  // mailgunDomain: 'transactional-mail.example.com',
-  // mailgunApiKey: 'key-testkeyb183848139913858e8abd9a3',
-  // stripeSecret: 'sk_test_Zzd814nldl91104qor5911gjald',
-
-};
+   *                                                                          *
+   * Default settings for custom configuration used in your app.              *
+   * (these may also be overridden in config/env/production.js)               *
+   *                                                                          *
+   ***************************************************************************/
+  igdb: {
+    apiKey: 'obfuscated'
+  },
+  mailer: {
+    host: 'smtp.elasticemail.com',
+    port: 2525,
+    secure: false,
+    auth: {
+      user: 'obfuscated',
+      pass: 'obfuscated'
+    },
+    logger: false,
+    debug: false
+  },
+  redis: {
+    host: 'obfuscated',
+    port: 16508,
+    pass: 'obfuscated'
+  },
+  shippo: {
+    apiKey: 'obfuscated'
+  }
+}

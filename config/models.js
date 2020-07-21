@@ -14,41 +14,45 @@
  */
 
 module.exports.models = {
-
-
-  /***************************************************************************
-  *                                                                          *
-  * How and whether Sails will attempt to automatically rebuild the          *
-  * tables/collections/etc. in your schema.                                  *
-  *                                                                          *
-  * > Note that, when running in a production environment, this will be      *
-  * > automatically set to `migrate: 'safe'`, no matter what you configure   *
-  * > here.  This is a failsafe to prevent Sails from accidentally running   *
-  * > auto-migrations on your production database.                           *
-  * >                                                                        *
-  * > For more info, see:                                                    *
-  * > https://sailsjs.com/docs/concepts/orm/model-settings#?migrate          *
-  *                                                                          *
-  ***************************************************************************/
-
-  // migrate: 'alter',
-
+  // https://next.sailsjs.com/documentation/upgrading/to-v-1-0#?changes-to-create-createeach-update-and-destroy-results
+  // TODO: remove after all third-party dependencies have updated to support Sails 1.0
+  fetchRecordsOnUpdate: true,
+  fetchRecordsOnDestroy: true,
+  fetchRecordsOnCreate: true,
+  fetchRecordsOnCreateEach: true,
 
   /***************************************************************************
-  *                                                                          *
-  * Base attributes that are included in all of your models by default.      *
-  * By convention, this is your primary key attribute (`id`), as well as two *
-  * other timestamp attributes for tracking when records were last created   *
-  * or updated.                                                              *
-  *                                                                          *
-  * > For more info, see:                                                    *
-  * > https://sailsjs.com/docs/concepts/orm/model-settings#?attributes       *
-  *                                                                          *
-  ***************************************************************************/
+   *                                                                          *
+   * How and whether Sails will attempt to automatically rebuild the          *
+   * tables/collections/etc. in your schema.                                  *
+   *                                                                          *
+   * > Note that, when running in a production environment, this will be      *
+   * > automatically set to `migrate: 'safe'`, no matter what you configure   *
+   * > here.  This is a failsafe to prevent Sails from accidentally running   *
+   * > auto-migrations on your production database.                           *
+   * >                                                                        *
+   * > For more info, see:                                                    *
+   * > https://sailsjs.com/docs/concepts/orm/model-settings#?migrate          *
+   *                                                                          *
+   ***************************************************************************/
+
+  migrate: 'safe',
+
+  /***************************************************************************
+   *                                                                          *
+   * Base attributes that are included in all of your models by default.      *
+   * By convention, this is your primary key attribute (`id`), as well as two *
+   * other timestamp attributes for tracking when records were last created   *
+   * or updated.                                                              *
+   *                                                                          *
+   * > For more info, see:                                                    *
+   * > https://sailsjs.com/docs/concepts/orm/model-settings#?attributes       *
+   *                                                                          *
+   ***************************************************************************/
   attributes: {
-    createdAt: { type: 'number', autoCreatedAt: true, },
-    updatedAt: { type: 'number', autoUpdatedAt: true, },
-    id: { type: 'number', autoIncrement: true, },
+    createdAt: { type: 'number', autoCreatedAt: true },
+    updatedAt: { type: 'number', autoUpdatedAt: true },
+    id: { type: 'string', columnName: '_id' }
     //--------------------------------------------------------------------------
     //  /\   Using MongoDB?
     //  ||   Replace `id` above with this instead:
@@ -59,5 +63,5 @@ module.exports.models = {
     //--------------------------------------------------------------------------
   },
 
-
-};
+  schema: true
+}

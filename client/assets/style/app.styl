@@ -1,17 +1,100 @@
-// Specify overrides (theme and/or base variables etc.)
-// See https://vuetifyjs.com/quick-start
-$theme := {
-  primary: #9c27b0
-  accent: #ce93d8
-  secondary: #424242
-  info: #0D47A1
-  warning: #ffb300
-  error: #B71C1C
-  success: #2E7D32
-}
-
-// Import Vuetify styling
 @require '~vuetify/src/stylus/main.styl'
+@require './transitions.styl'
 
-.page
-  @extend .fade-transition
+.jumbotron__image
+  width 100% /* TODO remove when vuetify fixes it */
+
+html
+body
+  height 100%
+
+.application
+  font-family: Roboto, Noto, Helvetica Neue, Helvetica, Arial, FreeSans, sans-serif
+
+.application--dark
+  a
+    color #f57c00
+
+h1
+h2
+h3
+h4
+h5
+h6
+  font-weight 500
+
+h1
+  font-size 45px
+  line-height 1
+  margin-bottom 10px
+
+a
+  text-decoration none
+
+.subheader
+  font-size 18px
+
+fieldset
+  border none
+
+.alert
+  color #212121
+  font-weight 500
+  a
+    color inherit
+    text-decoration underline
+    font-weight 700
+
+.container
+  @media only screen and (max-width: 599px)
+    padding 0
+  .container
+    padding 12px
+
+.form-group
+  &.error
+    background-color transparent !important
+
+.main
+  > .content
+    > .container
+      padding-top 20px
+
+.caption-lg
+  font-size 13px
+
+.no-style-link
+  color inherit !important
+  text-decoration none
+  cursor pointer
+
+.csv
+  > *:after
+    content: ", "
+  > *:last-of-type:after
+    content: ""
+
+.sr-only
+  position absolute
+  width 1px
+  height 1px
+  padding 0
+  margin -1px
+  overflow hidden
+  clip rect(0, 0, 0, 0)
+  border 0
+
+.should-truncate
+  overflow hidden
+  text-overflow ellipsis
+  white-space nowrap
+
+.break-word
+  overflow-wrap break-word
+  word-wrap break-word
+  word-break break-all
+  word-break break-word
+  hyphens auto
+
+.container.no-padding
+  padding 0

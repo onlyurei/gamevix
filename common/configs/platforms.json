@@ -1,0 +1,92 @@
+[
+  {
+    "igdbId": 130,
+    "name": "Nintendo Switch",
+    "slug": "nintendo-switch",
+    "generation": 8
+  },
+  {
+    "igdbId": 37,
+    "name": "Nintendo 3DS",
+    "slug": "3ds",
+    "generation": 8
+  },
+  {
+    "igdbId": 41,
+    "name": "Wii U",
+    "slug": "wiiu",
+    "generation": 8
+  },
+  {
+    "igdbId": 46,
+    "name": "PlayStation Vita",
+    "slug": "psvita",
+    "generation": 8
+  },
+  {
+    "igdbId": 48,
+    "name": "PlayStation 4",
+    "slug": "ps4--1",
+    "generation": 8
+  },
+  {
+    "igdbId": 49,
+    "name": "Xbox One",
+    "slug": "xboxone",
+    "generation": 8
+  },
+  {
+    "igdbId": 9,
+    "name": "PlayStation 3",
+    "slug": "ps3",
+    "generation": 7
+  },
+  {
+    "igdbId": 12,
+    "name": "Xbox 360",
+    "slug": "xbox360",
+    "generation": 7
+  },
+  {
+    "igdbId": 20,
+    "name": "Nintendo DS",
+    "slug": "nds",
+    "generation": 7
+  },
+  {
+    "igdbId": 38,
+    "name": "PlayStation Portable",
+    "slug": "psp",
+    "generation": 7
+  },
+  {
+    "igdbId": 5,
+    "name": "Wii",
+    "slug": "wii",
+    "generation": 7
+  },
+  {
+    "igdbId": 8,
+    "name": "PlayStation 2",
+    "slug": "ps2",
+    "generation": 6
+  },
+  {
+    "igdbId": 11,
+    "name": "Xbox",
+    "slug": "xbox",
+    "generation": 6
+  },
+  {
+    "igdbId": 21,
+    "name": "Nintendo GameCube",
+    "slug": "ngc",
+    "generation": 6
+  },
+  {
+    "igdbId": 23,
+    "name": "Dreamcast",
+    "slug": "dc",
+    "generation": 6
+  }
+]

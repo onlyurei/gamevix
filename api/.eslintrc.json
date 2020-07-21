@@ -1,0 +1,13 @@
+{
+  "globals": {
+    "sails": false,
+    "_": false,
+    "Address": false,
+    "Admin": false,
+    "User": false,
+    "UserGame": false,
+    "UserGameSwap": false,
+    "UserPlatform": false,
+    "UserSwapPreference": false
+  }
+}

@@ -1,36 +1,50 @@
 <template>
-  <section class="container">
-    <!-- <img src="../assets/img/logo.png" alt="Nuxt.js Logo" /> -->
-    <h1 class="title">
-      {{ error.statusCode }}
-    </h1>
-    <h2 class="info">
-      {{ error.message }}
-    </h2>
-    <nuxt-link class="button" to="/" v-if="error.statusCode === 404">
-      Homepage
-    </nuxt-link>
-  </section>
+  <v-content>
+    <v-container>
+      <h1 class="title">
+        Sorry, we have trouble loading the page
+      </h1>
+      <blockquote class="blockquote">
+        <p v-if="error.message">
+          {{ error.message }}
+        </p>
+        <p v-if="error.statusCode">
+          Error code: {{ error.statusCode }}
+        </p>
+      </blockquote>
+      <a
+        v-if="error && error.statusCode !== 404"
+        :href="$route.fullPath.replace($route.hash, '')"
+        class="subheading"
+      >
+        Go back to previous page
+      </a>
+      <h2 class="subheading mt-4 mb-2">
+        Useful links
+      </h2>
+      <ul class="browser-list--unstyled">
+        <li>
+          <nuxt-link to="/">
+            Home
+          </nuxt-link>
+        </li>
+        <li>
+          <nuxt-link to="/news">
+            Latest game news
+          </nuxt-link>
+        </li>
+        <li>
+          <nuxt-link to="/games">
+            Discover games
+          </nuxt-link>
+        </li>
+      </ul>
+    </v-container>
+  </v-content>
 </template>
+
 <script>
 export default {
-  props: ['error']
+  props: { error: { type: Object, required: true } }
 }
 </script>
-
-<style scoped>
-.title {
-  margin-top: 15px;
-  font-size: 5em;
-}
-
-.info {
-  font-weight: 300;
-  color: #9aabb1;
-  margin: 0;
-}
-
-.button {
-  margin-top: 50px;
-}
-</style>

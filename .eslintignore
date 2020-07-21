@@ -22,4 +22,5 @@
 #
 ################################################
 
-assets/dependencies/**/*.js
+client/static
+migrations/

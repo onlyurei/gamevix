@@ -1,27 +1,63 @@
 <template>
-  <v-layout column justify-center align-center>
-    <v-flex xs12 sm8 md6>
-      <div class="text-xs-center">
-        <img src="/v.png" alt="Vuetify.js" class="mb-5" />
-      </div>
-      <v-card>
-        <v-card-text>
-          <p>Welcome to the Webpack SSR template.</p>
-          <p>Vuetify is a progressive Material Design component framework for Vue.js. It was designed to empower developers to create amazing applications. For more information on Vuetify, check out the
-            <a href="https://vuetifyjs.com" target="_blank">documentation</a>. If you have questions, please join the official
-            <a href="https://gitter.im/vuetifyjs/Lobby" target="_blank" title="chat">gitter</a>. Find a bug? Report it on the github
-            <a href="https://github.com/vuetifyjs/vuetify/issues" target="_blank" title="contribute">issue board</a>.</p>
-          <p>Thank you for developing with Vuetify and I look forward to bringing more exciting features in the future.</p>
-          <div class="text-xs-right">
-            <em>
-              <small>&mdash; John Leider</small>
-            </em>
-          </div>
-        </v-card-text>
-        <v-card-actions>
-          <v-btn primary flat router nuxt to="/inspire">Continue</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-flex>
-  </v-layout>
+  <v-container fluid class="no-padding">
+    <hero-jumbotron />
+    <how-it-works />
+    <pricing-info />
+    <supported-platforms />
+    <new-games />
+  </v-container>
 </template>
+
+<script>
+import host from '../../common/configs/host'
+import { description } from '../../package'
+import HeroJumbotron from '../components/pages/index/hero-jumbotron.vue'
+import HowItWorks from '../components/pages/index/how-it-works.vue'
+import NewGames from '../components/pages/index/new-games.vue'
+import PricingInfo from '../components/pages/index/pricing-info.vue'
+import SupportedPlatforms from '../components/pages/index/supported-platforms.vue'
+
+export default {
+  components: {
+    HeroJumbotron,
+    HowItWorks,
+    PricingInfo,
+    NewGames,
+    SupportedPlatforms
+  },
+  async fetch({ store }) {
+    await Promise.all([
+      store.dispatch('games_browse/getRecentlyReleased'),
+      store.dispatch('games_browse/getToBeReleased'),
+      store.dispatch('games_browse/getMostAnticipated'),
+      store.dispatch('games_browse/getPopular'),
+      store.dispatch('games_browse/getBestRated')
+    ])
+  },
+  head() {
+    const link = []
+    link.push({
+      rel: 'canonical',
+      href: `${host.origin}/`
+    })
+    return {
+      title: 'GameVix: Swap Video Games - Home',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: description
+        }
+      ],
+      link
+    }
+  }
+}
+</script>
+
+<style rel="stylesheet/stylus" lang="stylus">
+.main.index
+  > .content--wrap
+    > .container
+      padding 0
+</style>

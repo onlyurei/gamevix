@@ -1,0 +1,19 @@
+{
+  "root": true,
+  "extends": [
+    "plugin:vue/recommended"
+  ],
+  "plugins": [
+    "vue"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2017,
+    "sourceType": "module"
+  },
+  "rules": {
+    "vue/max-attributes-per-line": "off",
+    "node/no-unsupported-features": "off",
+    "strict": "off",
+    "consistent-return": "off"
+  }
+}
