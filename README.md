@@ -1,4 +1,30 @@
-# GameBetween
+Was live on www.gamevix.com
+
+https://www.google.com/search?q=%22gamevix%22
+
+![Screenshot of Homepage](./screenshots/0.png)
+
+![Screenshot of Games Index Page](./screenshots/1.png)
+
+![Screenshot of Popular Games Page 1](./screenshots/2.png)
+
+![Screenshot of Popular Games Page 2](./screenshots/3.png)
+
+![Screenshot of Most Anticipated Games Page](./screenshots/4.jpg)
+
+![Screenshot of Games Browse by Genre Page - Role-playing (RPG)](./screenshots/5.png)
+
+![Screenshot of Games Browse by Platform Page - PlayStation 4](./screenshots/6.png)
+
+![Screenshot of Platforms Index Page](./screenshots/7.png)
+
+![Screenshot of Game Detail Page - Xenoblade Chroniccles 2](./screenshots/8.png)
+
+![Screenshot of Game Detail Page - Rise & Shine](./screenshots/9.png)
+
+![Screenshot of Game Detail Page - Rise & Shine (continued)](./screenshots/10.png)
+
+![Screenshot of Your Game Consoles Page](./screenshots/11.png)
 
 ## MVP
 - Homepage
