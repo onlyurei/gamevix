@@ -1,4 +1,4 @@
-Was live on www.gamevix.com
+Was live on www.gamevix.com during 2018 - 2020.
 
 https://www.google.com/search?q=%22gamevix%22
 
