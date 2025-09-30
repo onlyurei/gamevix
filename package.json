@@ -28,7 +28,7 @@
     "helmet": "^3.9.0",
     "igdb-api-node": "^4.0.3",
     "json-mapper": "0.0.12",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.21",
     "lru-cache": "^4.1.1",
     "mailgen": "^2.0.2",
     "node-summary": "^1.2.0",
