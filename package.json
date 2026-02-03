@@ -30,7 +30,7 @@
     "json-mapper": "0.0.12",
     "lodash": "^4.17.4",
     "lru-cache": "^4.1.1",
-    "mailgen": "^2.0.2",
+    "mailgen": "^2.0.32",
     "node-summary": "^1.2.0",
     "node-vibrant": "^3.0.0-alpha.2",
     "nodemailer": "^4.1.0",
